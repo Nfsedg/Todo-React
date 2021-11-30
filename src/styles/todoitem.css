@@ -1,0 +1,15 @@
+.todoList {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px 10px 20px;
+    line-height: 1px;
+    color: white;
+}
+
+.todoList__button--completed {
+    color: gray;
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+}

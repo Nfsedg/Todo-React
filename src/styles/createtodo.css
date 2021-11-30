@@ -1,0 +1,32 @@
+.create-todo {
+    width: 90%;
+    height: 42px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: hsl(235, 24%, 19%);
+    color: white;
+}
+
+.create-todo__button {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid hsl(235, 19%, 35%);
+    margin-right: 10px;
+    background: none;
+}
+.create-todo__input {
+    width: 75%;
+    background: none;
+    margin: none;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 14px;
+}

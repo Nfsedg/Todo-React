@@ -1,24 +1,28 @@
-import logo from './logo.svg';
+import React from "react";
+import { TodoHeader } from './components/TodoHeader';
+import { CreateTodo } from './components/CreateTodo';
+import { TodoList } from './components/TodoList';
+import { TodoInfo } from './components/TodoInfo';
+import { TodoFilter } from './components/TodoFilter';
+import { newContext } from './context/newContext';
+import { useTodos } from './context/useTodos';
 import './App.css';
 
 function App() {
+  const todosContext = useTodos();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <newContext.Provider value={todosContext}>
+      <React.Fragment>
+        <TodoHeader/>
+        <CreateTodo/>
+        <TodoList>
+          <TodoInfo/>
+        </TodoList>
+
+        <TodoFilter/>
+      </React.Fragment>
+    </newContext.Provider>
   );
 }
 

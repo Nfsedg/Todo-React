@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+}
+html {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: hsl(235, 21%, 11%);
+}
+body > div {
+    background-image: url('../images/bg-mobile-light.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    height: 180px;
+    z-index: 0;
+}
+
+.header {
+    width: 100%;
+    padding: 8px 0 0 16px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.header__title {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    color: white;
+}
+.header__toggle {
+    background-image: url('../images/icon-moon.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    width: 25px;
+    height: 25px;
+}
