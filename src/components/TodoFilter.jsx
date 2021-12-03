@@ -3,13 +3,13 @@ import { newContext } from "../context/newContext";
 import "../styles/todofilter.css";
 
 function TodoFilter() {
-    const { dispatch, ACTIONS } = React.useContext(newContext)
+    const { displayAllTodo, filterActiveTodo, filterCompletedTodo } = React.useContext(newContext)
 
     return(
         <div className="todofilter">
-            <p onClick={() => dispatch({ type: ACTIONS.ALL_TODOS })}>All</p>
-            <p onClick={() => dispatch({ type: ACTIONS.ACTIVE_TODOS })}>Active</p>
-            <p onClick={() => dispatch({ type: ACTIONS.COMPLETE_TODO })}>Completed</p>
+            <p onClick={displayAllTodo}>All</p>
+            <p onClick={filterActiveTodo}>Active</p>
+            <p onClick={filterCompletedTodo}>Completed</p>
         </div>  
     )
 }

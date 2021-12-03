@@ -12,22 +12,15 @@ const initialTodos = hardCodeTodo;
 const useTodos = () => {
   const ACTIONS = {
     ADD_TODO: 'add-todo',
-    REMOVE_TODO: 'remove-todo',
-    ACTIVE_TODOS: 'active-todo',
-    COMPLETE_TODO: 'complete-todo',
-    ALL_TODOS: 'all-todos'
+    DELETE_COMPLETED_TODOS: 'delete-completed-todos'
   }
   
   function reducer(todos, action) {
     switch (action.type) {
       case ACTIONS.ADD_TODO:
         return [...todos, newTodo(action.payload.text)]
-      case ACTIONS.COMPLETE_TODO:
-        return todos.filter(t => t.completed);
-      case ACTIONS.ACTIVE_TODOS:
-        return todos.filter(t => !t.completed);
-      case ACTIONS.ALL_TODOS:
-        return [...todos];
+      case ACTIONS.DELETE_COMPLETED_TODOS:
+        return todos.filter(t => !t.completed)
       default:
         return todos;
     }
@@ -37,13 +30,14 @@ const useTodos = () => {
     return { id: Date.now(), text: text, completed: false }
   }
 
-
   const [todoState, dispatch] = React.useReducer(reducer, initialTodos)
+  const [displayTodo, setDisplayTodo] = React.useState(todoState)
   const [completeTodo, setCompletedTodo] = React.useState(0)
 
   React.useEffect(() => {
     countFinishTodos();
-  })
+    setDisplayTodo(todoState);
+  }, [todoState])
 
   const countFinishTodos = () => {
     let total = 0;
@@ -53,10 +47,6 @@ const useTodos = () => {
         }
     }
     setCompletedTodo(total)
-  }
-
-  function addNewTodo(text) {
-    dispatch({ type: ACTIONS.ADD_TODO, payload: { text: text } })
   }
 
 
@@ -87,16 +77,45 @@ const useTodos = () => {
     }
   }
 
+  // **Filter functions**
+
+  const filterActiveTodo = () => {
+    const newTodo = []
+    for(let item of todoState) {
+        if(item.completed === false) {
+          newTodo.push(item)
+        }
+    }
+    setDisplayTodo(newTodo)
+  }
+  const filterCompletedTodo = () => {
+    const newTodo = []
+    for(let item of todoState) {
+        if(item.completed === true) {
+          newTodo.push(item)
+        }
+    }
+    setDisplayTodo(newTodo)
+  }
+  
+  const displayAllTodo = () => {
+    setDisplayTodo(todoState)
+  }
+
 
   return {
       todoState,
       completeTodo,
-      addNewTodo,
       getCompleteTodos,
       deleteTodo,
       deleteCompletedTodo,
       dispatch,
-      ACTIONS
+      ACTIONS,
+      displayTodo,
+      displayAllTodo, 
+      filterActiveTodo,
+      filterCompletedTodo,
+      setDisplayTodo
   }
 }
 

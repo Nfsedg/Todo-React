@@ -12,6 +12,7 @@ function CreateTodo() {
     const addingTodo = (text) => {
         dispatch({ type: ACTIONS.ADD_TODO, payload: { text: text } })
         setTextTodo('')
+        debugger
     }
     
     return(
@@ -19,7 +20,7 @@ function CreateTodo() {
         >
             <button 
                 className="create-todo__button"
-                onClick={() => addingTodo(textTodo)}
+                onClick={() => {addingTodo(textTodo)}}
             >+</button>
             <input 
                 onChange={saveTodoText}
