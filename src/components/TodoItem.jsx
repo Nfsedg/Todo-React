@@ -1,30 +1,32 @@
 import React from "react";
+import { FilterTodo } from "./buttons/FilterTodo";
 import "../styles/todoitem.css";
 
-function TodoItem(props) {
+function TodoItem({ text, getCompleteTodos, deleteTodo }) {
     const [complete, setComplete] = React.useState(false)
 
     function finishTodo() {
-        if(complete === false) {
-            setComplete(true)
-        }
+        setComplete(!complete)
     }
+
     return(
-        <li className="todoList" draggable="true">
+        <li className="todoList" draggable="true" onDragStart={e => console.log(e)} onDrag={e => console.log(e)} onDragEnd={e => console.log(e)}>
             <button 
                 className="todoList__button--complete"
                 onClick={() => {
-                    props.getCompleteTodos()
+                    getCompleteTodos()
                     finishTodo()
                 }}            
-            >V</button>
-            <p className={`todoList__text ${complete && "todoList__button--completed"}`}>
-            {props.text}
+            >
+                {complete ? <FilterTodo/> : <span>V</span>}
+            </button>
+            <p className={complete ? "todoList__text--completed" : "todoList__text"}>
+                {text}
             </p>
             <button 
                 className="todoList__button--delete"
-                onClick={props.deleteTodo}
-            >X</button>
+                onClick={deleteTodo}
+            ></button>
         </li>
     )
 }

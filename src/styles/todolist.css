@@ -1,9 +1,9 @@
 .todo-list {
-    width: 90%;
-    margin: 0 auto 20px;
-    border-radius: 5px;
-    background-color: hsl(235, 24%, 19%);
-    list-style: none;
-    padding: 0;
-
+  width: 90%;
+  margin: 0 auto 20px;
+  border-radius: 5px;
+  background-color: hsl(235, 24%, 19%);
+  list-style: none;
+  padding: 0;
+  box-shadow: 0 3px 15px 7px rgba(19, 20, 44, 0.616);
 }

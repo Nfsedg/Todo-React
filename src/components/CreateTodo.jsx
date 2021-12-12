@@ -12,7 +12,6 @@ function CreateTodo() {
     const addingTodo = (text) => {
         dispatch({ type: ACTIONS.ADD_TODO, payload: { text: text } })
         setTextTodo('')
-        debugger
     }
     
     return(

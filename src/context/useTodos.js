@@ -12,7 +12,8 @@ const initialTodos = hardCodeTodo;
 const useTodos = () => {
   const ACTIONS = {
     ADD_TODO: 'add-todo',
-    DELETE_COMPLETED_TODOS: 'delete-completed-todos'
+    DELETE_COMPLETED_TODOS: 'delete-completed-todos',
+    DELETE_TODO: 'delete-todo'
   }
   
   function reducer(todos, action) {
@@ -21,19 +22,25 @@ const useTodos = () => {
         return [...todos, newTodo(action.payload.text)]
       case ACTIONS.DELETE_COMPLETED_TODOS:
         return todos.filter(t => !t.completed)
+      case ACTIONS.DELETE_TODO:
+        return todos.filter(item => item.id !== action.payload)
       default:
         return todos;
     }
   }
-  
+
   const newTodo = (text) => {
     return { id: Date.now(), text: text, completed: false }
   }
-
+  const deleteTodoSelect = (id) => {
+    dispatch({type: ACTIONS.DELETE_TODO, payload: id})
+  }
+  
+  
   const [todoState, dispatch] = React.useReducer(reducer, initialTodos)
   const [displayTodo, setDisplayTodo] = React.useState(todoState)
   const [completeTodo, setCompletedTodo] = React.useState(0)
-
+  
   React.useEffect(() => {
     countFinishTodos();
     setDisplayTodo(todoState);
@@ -42,13 +49,12 @@ const useTodos = () => {
   const countFinishTodos = () => {
     let total = 0;
     for(let item of todoState) {
-        if(item.completed === false) {
-            total += 1;
-        }
+      if(item.completed === false) {
+        total += 1;
+      }
     }
     setCompletedTodo(total)
   }
-
 
   function getCompleteTodos(input) {
     const getIndex = todoState.findIndex(todo => todo.text === input)
@@ -56,15 +62,6 @@ const useTodos = () => {
     const newTodo = [...todoState]
 
     newTodo[getIndex].completed = true
-    dispatch(newTodo)
-  }
-
-  const deleteTodo = (input) => {
-    const getIndex = todoState.findIndex(todo => todo.text === input)
-
-    const newTodo = [...todoState]
-
-    newTodo.splice(getIndex, 1)
     dispatch(newTodo)
   }
 
@@ -107,7 +104,6 @@ const useTodos = () => {
       todoState,
       completeTodo,
       getCompleteTodos,
-      deleteTodo,
       deleteCompletedTodo,
       dispatch,
       ACTIONS,
@@ -115,7 +111,8 @@ const useTodos = () => {
       displayAllTodo, 
       filterActiveTodo,
       filterCompletedTodo,
-      setDisplayTodo
+      setDisplayTodo,
+      deleteTodoSelect
   }
 }
 

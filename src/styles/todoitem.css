@@ -1,15 +1,37 @@
 .todoList {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px 10px 20px;
-    line-height: 1px;
-    color: white;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px 10px 20px;
+  line-height: 1px;
+  color: white;
 }
 
-.todoList__button--completed {
-    color: gray;
-    text-decoration: line-through;
-    text-decoration-thickness: 2px;
+.todoList__button--complete {
+  width: 25px;
+  height: 25px;
+  color: rgb(88, 88, 88);
+  text-decoration-thickness: 2px;
+  background: none;
+  border: 1px rgba(165, 165, 165, 0.295) solid;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.todoList__text--completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.todoList__button--delete {
+  width: 15px;
+  height: 15px;
+  background: none;
+  border: none;
+  background-image: url("../images/icon-cross.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
 }

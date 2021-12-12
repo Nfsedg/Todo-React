@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
-import { newContext } from "../../context/newContext";
+import React from 'react'
+import './styles.css'
 
-const FilterTodo = ({ children }) => {
+const FilterTodo = () => {
     return(
-        <p>{children}</p>
+        <div className='button-wrapper'>
+            <span className='checked-button'></span>
+        </div>
     )
 }
 

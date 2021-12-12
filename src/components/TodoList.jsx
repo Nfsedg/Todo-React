@@ -4,14 +4,14 @@ import { newContext } from "../context/newContext";
 import "../styles/todolist.css"
 
 function TodoList({children}) {
-    const { deleteTodo, getCompleteTodos, displayTodo } = useContext(newContext)
+    const { deleteTodoSelect, getCompleteTodos, displayTodo } = useContext(newContext)
     return(
         <ul className="todo-list">
         {displayTodo.map(todo => {
           return <TodoItem 
             text={todo.text} 
             key={todo.id}
-            deleteTodo={()=> {deleteTodo(todo.text)}}
+            deleteTodo={()=> deleteTodoSelect(todo.id)}
             getCompleteTodos={() =>getCompleteTodos(todo.text)}
           />
         })}
