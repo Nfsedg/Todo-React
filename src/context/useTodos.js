@@ -1,10 +1,10 @@
 import React from "react";
 let hardCodeTodo = [
-  {id: 0, text: "Primer texto", completed: false},
-  {id: 1, text: "Segundo texto", completed: false},
-  {id: 2, text: "Tercero texto", completed: false},
-  {id: 3, text: "Cuarto texto", completed: false},
-  {id: 4, text: "Quinto texto", completed: false}
+  {id: '0', text: "Primer texto", completed: false},
+  {id: '1', text: "Segundo texto", completed: false},
+  {id: '2', text: "Tercero texto", completed: false},
+  {id: '3', text: "Cuarto texto", completed: false},
+  {id: '4', text: "Quinto texto", completed: false}
 ]
 const initialTodos = hardCodeTodo;
 
@@ -13,7 +13,8 @@ const useTodos = () => {
   const ACTIONS = {
     ADD_TODO: 'add-todo',
     DELETE_COMPLETED_TODOS: 'delete-completed-todos',
-    DELETE_TODO: 'delete-todo'
+    DELETE_TODO: 'delete-todo',
+    REORDER_TODO: 'reorder_todo'
   }
   
   function reducer(todos, action) {
@@ -24,13 +25,15 @@ const useTodos = () => {
         return todos.filter(t => !t.completed)
       case ACTIONS.DELETE_TODO:
         return todos.filter(item => item.id !== action.payload)
+      case ACTIONS.REORDER_TODO:
+        return todos
       default:
         return todos;
     }
   }
 
   const newTodo = (text) => {
-    return { id: Date.now(), text: text, completed: false }
+    return { id: toString(Date.now()), text: text, completed: false }
   }
   const deleteTodoSelect = (id) => {
     dispatch({type: ACTIONS.DELETE_TODO, payload: id})
