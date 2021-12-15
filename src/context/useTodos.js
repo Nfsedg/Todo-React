@@ -17,6 +17,14 @@ const useTodos = () => {
     REORDER_TODO: 'reorder_todo'
   }
   
+  const reorder = (list, startIndex, endIndex) => {
+    const result = [...list];
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+  
+    return result;
+  }
+
   function reducer(todos, action) {
     switch (action.type) {
       case ACTIONS.ADD_TODO:
@@ -26,7 +34,7 @@ const useTodos = () => {
       case ACTIONS.DELETE_TODO:
         return todos.filter(item => item.id !== action.payload)
       case ACTIONS.REORDER_TODO:
-        return todos
+        return reorder(todos, action.payload.startIndex, action.payload.endIndex)
       default:
         return todos;
     }

@@ -4,20 +4,17 @@ import { newContext } from "../context/newContext";
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import "../styles/todolist.css";
 
-const reorder = (list, startIndex, endIndex) => {
-  const result = [...list];
-  const [removed] = result.splice(startIndex, 1);
-  result.splice(endIndex, 0, removed);
-
-  return result;
-}
-
-
 function TodoList({children}) {
-    const { deleteTodoSelect, getCompleteTodos, displayTodo } = useContext(newContext)
+    const { deleteTodoSelect, getCompleteTodos, displayTodo, dispatch, ACTIONS } = useContext(newContext)
 
     return(
-      <DragDropContext onDragEnd={(result) => console.log(result)}>
+      <DragDropContext onDragEnd={(result) => {
+        const {source, destination} = result;
+        if(!destination) {return;}
+        if(source.index === destination.index && source.droppableId === destination.droppableId) {return;}
+
+        dispatch({type: ACTIONS.REORDER_TODO, payload: { startIndex: source.index, endIndex: destination.index}})
+      }}>
         <Droppable droppableId="todosDrop">
         {(droppableProvider) => 
           <ul {...droppableProvider.droppableProps} ref={droppableProvider.innerRef} className="todo-list">
