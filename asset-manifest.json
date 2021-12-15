@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Todo-React/static/css/main.bf59affa.chunk.css",
+    "main.js": "/Todo-React/static/js/main.e4a03183.chunk.js",
+    "main.js.map": "/Todo-React/static/js/main.e4a03183.chunk.js.map",
+    "runtime-main.js": "/Todo-React/static/js/runtime-main.e25bb186.js",
+    "runtime-main.js.map": "/Todo-React/static/js/runtime-main.e25bb186.js.map",
+    "static/js/2.6d0d4f77.chunk.js": "/Todo-React/static/js/2.6d0d4f77.chunk.js",
+    "static/js/2.6d0d4f77.chunk.js.map": "/Todo-React/static/js/2.6d0d4f77.chunk.js.map",
+    "index.html": "/Todo-React/index.html",
+    "static/css/main.bf59affa.chunk.css.map": "/Todo-React/static/css/main.bf59affa.chunk.css.map",
+    "static/js/2.6d0d4f77.chunk.js.LICENSE.txt": "/Todo-React/static/js/2.6d0d4f77.chunk.js.LICENSE.txt",
+    "static/media/styles.css": "/Todo-React/static/media/icon-check.a8fb15d0.svg",
+    "static/media/todoitem.css": "/Todo-React/static/media/icon-cross.6ee81d30.svg",
+    "static/media/headertodo.css": "/Todo-React/static/media/icon-moon.6c03114b.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e25bb186.js",
+    "static/js/2.6d0d4f77.chunk.js",
+    "static/css/main.bf59affa.chunk.css",
+    "static/js/main.e4a03183.chunk.js"
+  ]
+}
