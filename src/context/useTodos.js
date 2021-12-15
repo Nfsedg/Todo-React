@@ -53,19 +53,21 @@ const useTodos = () => {
   const [completeTodo, setCompletedTodo] = React.useState(0)
   
   React.useEffect(() => {
-    countFinishTodos();
+    function countFinishTodos() {
+      let total = 0;
+      for(let item of todoState) {
+        if(item.completed === false) {
+          total += 1;
+        }
+      }
+      setCompletedTodo(total)
+    }
+    
+    countFinishTodos()
     setDisplayTodo(todoState);
   }, [todoState])
 
-  const countFinishTodos = () => {
-    let total = 0;
-    for(let item of todoState) {
-      if(item.completed === false) {
-        total += 1;
-      }
-    }
-    setCompletedTodo(total)
-  }
+  
 
   function getCompleteTodos(input) {
     const getIndex = todoState.findIndex(todo => todo.text === input)
