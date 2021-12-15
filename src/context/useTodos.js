@@ -41,7 +41,7 @@ const useTodos = () => {
   }
 
   const newTodo = (text) => {
-    return { id: toString(Date.now()), text: text, completed: false }
+    return { id: Date.now().toString(), text: text, completed: false }
   }
   const deleteTodoSelect = (id) => {
     dispatch({type: ACTIONS.DELETE_TODO, payload: id})
