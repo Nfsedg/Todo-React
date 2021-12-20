@@ -1,8 +1,15 @@
 .todoinfo {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 
-    font-size: 14px;
-    padding: 10px 20px 10px 20px;
-    color: white;
+  font-size: 14px;
+  padding: 10px 20px 10px 20px;
+  color: rgba(255, 255, 255, 0.582);
+}
+
+@media (min-width: 640px) {
+  .todoinfo {
+    height: 52px;
+    padding-top: 18px;
+  }
 }

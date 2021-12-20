@@ -1,0 +1,9 @@
+.footer {
+  margin: 56px auto;
+}
+
+.footer p {
+  color: rgba(255, 255, 255, 0.582);
+  text-align: center;
+  font-size: 18px;
+}

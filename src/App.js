@@ -6,6 +6,7 @@ import { TodoInfo } from './components/TodoInfo';
 import { TodoFilter } from './components/TodoFilter';
 import { newContext } from './context/newContext';
 import { useTodos } from './context/useTodos';
+import { Footer } from "./components/Footer";
 import './App.css';
 
 function App() {
@@ -19,9 +20,9 @@ function App() {
         <TodoList>
           <TodoInfo/>
         </TodoList>
-
         <TodoFilter/>
       </React.Fragment>
+      <Footer/>
     </newContext.Provider>
   );
 }
